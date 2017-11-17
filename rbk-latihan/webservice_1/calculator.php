@@ -1,5 +1,9 @@
 <?php
 //lengkapi
+function power($a,$b){
+		$nc = pow($a, $b);
+	return $nc;
+	}
 function kurang($a,$b){
 		$d = $a - $b;
 	return $d;
@@ -29,6 +33,7 @@ $server->register("kurang", array("a"=>"xsd:int" ,"b"=>"xsd:int") , array("d"=>"
 $server->register("kali", array("a"=>"xsd:int" ,"b"=>"xsd:int") , array("e"=>"xsd:long"), "urn:calculatorService#kali");
 $server->register("bagi", array("a"=>"xsd:int" ,"b"=>"xsd:int") , array("f"=>"xsd:long"), "urn:calculatorService#bagi");
 $server->register("pangkat", array("a"=>"xsd:int" ,"b"=>"xsd:int") , array("g"=>"xsd:long"), "urn:calculatorService#pangkat");
+$server->register("power", array("a"=>"xsd:int" ,"b"=>"xsd:int") , array("nc"=>"xsd:long"), "urn:calculatorService#power");
 
 $GLOBALS['HTTP_RAW_POST_DATA'] = file_get_contents ('php://input');
 $HTTP_RAW_POST_DATA = $GLOBALS['HTTP_RAW_POST_DATA'];
