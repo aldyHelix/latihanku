@@ -17,7 +17,7 @@
 	</form>
 <?php 
 	require("lib/nusoap.php"); 
-	$url = "http://localhost/rbk-latihan/websevice_1/kurs.php";
+	$url = "http://localhost/latihanku/rbk-latihan/webservice_1/kurs.php";
 	if(isset($_POST['submit']))
 	{
 		$client = new nusoap_client($url);

@@ -17,23 +17,32 @@
 				</tr>
 			</td>
 		</table>
-		<input type="submit" name="submit" value="Jumlah">
+		<input type="submit" name="submit" value="Hitung">
 	</form>
 	<?php 
 	require("lib/nusoap.php"); 
-	$url = "http://localhost/rbk-latihan/websevice_1/calculator.php";
+	$url = "http://localhost/latihanku/rbk-latihan/webservice_1/calculator.php";
 	if(isset($_POST['submit']))
 	{
 		$client = new nusoap_client($url);
 		$a1 = $_POST['txta'];
 		$a2	= $_POST['txtb'];
-		$result = $client->call('calculator',array("a"=>$a1, "b"=>$a2));
+		$c = $client->call('tambah',array("a"=>$a1, "b"=>$a2));
+		$d = $client->call('kurang',array("a"=>$a1, "b"=>$a2));
+		$e = $client->call('kali',array("a"=>$a1, "b"=>$a2));
+		$f = $client->call('bagi',array("a"=>$a1, "b"=>$a2));
+		$g = $client->call('pangkat',array("a"=>$a1, "b"=>$a2));
+
 		$err = $client->getError();
 		if ($err) {
 			echo "<p><b>ERROR !".$client->getError()."</p></b>";
 		}
 		else{
-			echo "<p><b> Jumlah dari : " .$a1. " dan " .$a2. " = " .$result. "</p></b>";
+			echo "<p><b> Pengjumlahan dari : " .$a1. " dan " .$a2. " = " .$c. "</p></b>";
+			echo "<p><b> Pengurangan dari : " .$a1. " dan " .$a2. " = " .$d. "</p></b>";
+			echo "<p><b> Pengkalian dari : " .$a1. " dan " .$a2. " = " .$e. "</p></b>";
+			echo "<p><b> Pembagian dari : " .$a1. " dan " .$a2. " = " .$f. "</p></b>";
+			echo "<p><b> Perpangkatan dari : " .$a1. " dan " .$a2. " = " .$g. "</p></b>";
 		}
 		echo '<h2> Request </h2>';
 		echo '<pre>'.htmlspecialchars($client->request, ENT_QUOTES).'</pre>';

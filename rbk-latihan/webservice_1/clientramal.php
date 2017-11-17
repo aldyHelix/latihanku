@@ -77,7 +77,7 @@
 	</form>
 	<?php 
 		require("lib/nusoap.php");
-		$url = "http://localhost/rbk-latihan/websevice_1/ramal.php";
+		$url = "http://localhost/latihanku/rbk-latihan/webservice_1/ramal.php";
 	    if (isset($_POST['submit'])) {
 	    	$nama = $_POST['nama'];
 			$bulan = $_POST['bulan'];
