@@ -9,7 +9,6 @@
 	<script src="http://localhost/latihanku/rbk-latihan/assets/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 	<?php 
 		require("lib/nusoap.php"); 
 		$url = "http://localhost/latihanku/rbk-latihan/webservice_1/calculator.php";
