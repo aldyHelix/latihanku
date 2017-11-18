@@ -56,10 +56,12 @@
 		else{
 			echo "<div class='container'> <br> <p><b> Rp " .$rupiah. " ke ".$conv." adalah " .$result. "</p></b> </div>";
 		}
+		echo '<div class="container">';
 		echo '<h2> Request </h2>';
 		echo '<pre>'.htmlspecialchars($client->request, ENT_QUOTES).'</pre>';
 		echo '<h2> Response </h2>';
-		echo '<pre>'.htmlspecialchars($client->response, ENT_QUOTES).'</pre>';		
+		echo '<pre>'.htmlspecialchars($client->response, ENT_QUOTES).'</pre>';
+		echo '</div>';		
 	}
  ?>
 </body>
