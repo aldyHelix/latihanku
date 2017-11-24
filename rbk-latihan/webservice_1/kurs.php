@@ -1,4 +1,6 @@
-<?php 
+<?php
+//lengkapi
+ 
 function kurs($dollar){
 	return 13000 * $dollar;
 }
