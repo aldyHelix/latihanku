@@ -10,18 +10,16 @@ class pegawai extends REST_Controller {
     function __construct($config = 'rest') {
         parent::__construct($config);
         $this->load->database();
+        $this->load->model('Mdl_crud');
     }
 
     //Menampilkan data kontak
     function index_get() {
         $nip = $this->get('nip');
-        if ($nip == '') {
-            $dtpeg = $this->db->get('data_pegawai')->result();
-        } else {
-            $this->db->where('nip', $nip);
-            $dtpeg = $this->db->get('data_pegawai')->result();
-        }
-        $this->response($dtpeg, 200);
+        $response = array(
+            'pegawai' => $this->Mdl_crud->pull_all('data_pegawai')->result());
+
+        $this->response($response, 200);
     }
 
 
@@ -33,7 +31,7 @@ class pegawai extends REST_Controller {
     			'alamat'	=>$this->post('alamat'),
     			'jabatan'	=>$this->post('jabatan')
     	);
-    	$insert = $this->db->insert('data_pegawai', $data);
+    	$insert = $this->Mdl_crud->add('data_pegawai', $data);
     	if ($insert) {
     		$this->response($data, 200);
     	} else {

@@ -1,13 +1,30 @@
 <?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Mdl_crud extends CI_Model
 {
-	
+	public $CI;
+		function __construct()
+		{
+			parent:: __construct();
+			$CI = &get_instance();
+			$this->db2 = $CI->load->database('absensi', TRUE);
+		}
+
+	public function add_pg($table, $data)
+	{
+		return $this->db2->insert($table, $data);
+	}
+
 	public function add($table, $data)
 	{
 		return $this->db->insert($table, $data);
 	}
 	public function pull_all($table){
-		return $this->db->get($table)->result();
+		return $this->db->get($table);
+	}
+	public function pull_all_pg($table){
+		return $this->db2->get($table);
 	}
 	public function check($table, $where = '')
 	{

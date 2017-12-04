@@ -94,3 +94,27 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+
+$db['absensi'] = array(
+	'dsn'	=> '',
+	'hostname' => 'localhost',
+	'username' => 'postgres',
+	'password' => '7h1pitiuq',
+	'database' => 'db_absensi',
+	'dbdriver' => 'postgre',
+	'dbprefix' => '',
+	'pconnect' => TRUE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'port'		=> '5433',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
