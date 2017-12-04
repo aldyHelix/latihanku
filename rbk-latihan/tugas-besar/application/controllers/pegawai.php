@@ -26,7 +26,7 @@ class pegawai extends REST_Controller {
 
 
     //Masukan function selanjutnya disini
-    function post_peg(){
+    function index_post(){
     	$data =  array(
     			'nip'		=>$this->post('nip'),
     			'nama'		=>$this->post('nama'),
@@ -36,6 +36,33 @@ class pegawai extends REST_Controller {
     	$insert = $this->db->insert('data_pegawai', $data);
     	if ($insert) {
     		$this->response($data, 200);
+    	} else {
+    		$this->response(array('status' => 'fail' , 502));
+    	}
+    }
+
+    function index_put(){
+    	$nip = $this->put('nip');
+    	$data =  array(
+    			'nip'		=>$this->put('nip'),
+    			'nama'		=>$this->put('nama'),
+    			'alamat'	=>$this->put('alamat'),
+    			'jabatan'	=>$this->put('jabatan')
+    	);
+    	$this->db->where('nip', $nip);
+    	$update = $this->db->update('data_pegawai', $data);
+    	if($update){
+    		$this->response($data, 200);
+    	} else {
+    		$this->response(array('status' => 'fail', 502));         
+    	}
+    }
+    function index_delete(){
+    	$nip = $this->delete('nip');
+    	$this->db->where('nip', $nip);
+    	$delete = $this->db->delete('data_pegawai');
+    	if($delete){
+    		$this->response(array('status' => 'success'), 201);
     	} else {
     		$this->response(array('status' => 'fail' , 502));
     	}
