@@ -37,12 +37,12 @@ $akademik_server->wsdl->addComplexType(
 		"all",
 		"",
 		array(
-			"nim"=>array("name"=>"nim","type"=>"xsd:string"),
+			"nim"=>array("name"=>"nim","type"=>"xsd:int"),
 			"nama"=>array("name"=>"nama","type"=>"xsd:string"),
 			"alamat"=>array("name"=>"alamat","type"=>"xsd:string")
 		)
 	);
-$akademik_server->register("get_list_mahasiswa",array("param"=>"xsd:string"),array("return"=>"tns:infomhs"),"urn:mhsService","urn:mhsService#get_list_mahasiswa");
+$akademik_server->register("get_list_mahasiswa",array("param"=>"xsd:int"),array("return"=>"tns:infomhs"),"urn:mhsService","urn:mhsService#get_list_mahasiswa");
 
 
 $GLOBALS['HTTP_RAW_POST_DATA'] = file_get_contents ('php://input');

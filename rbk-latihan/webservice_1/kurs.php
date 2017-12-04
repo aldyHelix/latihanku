@@ -1,11 +1,6 @@
-<<<<<<< HEAD
+
 <?php
 //lengkapi
- 
-function kurs($dollar){
-	return 13000 * $dollar;
-=======
-<?php 
 function USD($rupiah){
 	return $rupiah / 13585;
 }
@@ -41,7 +36,6 @@ function HKD($rupiah){
 }
 function JPY($rupiah){
 	return ($rupiah / 12086)* 100;
->>>>>>> origin/master
 }
 require("lib/nusoap.php");
 $server = new soap_server();
