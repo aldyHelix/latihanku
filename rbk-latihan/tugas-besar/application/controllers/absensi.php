@@ -10,6 +10,7 @@ class absensi extends REST_Controller {
     function __construct($config = 'rest') {
         parent::__construct($config);
         $this->load->model('Mdl_crud');
+        $this->load->helper('date');
     }
 
     //Menampilkan data kontak
@@ -22,5 +23,19 @@ class absensi extends REST_Controller {
         $this->response($response, 200);
     }
 
+    function index_post(){
+    	$waktu =  date(DATE_ISO8601, time());
+    	$data = array(
+    			'no' => $this->post('no'),
+    			'nip' =>$this->post('nip'),
+    			'waktu_absen' =>$waktu
+    	);
+    	$insert = $this->Mdl_crud->add_pg('absen_masuk', $data);
+    	if ($insert) {
+    		$this->response($data, 200);
+    	} else {
+    		$this->response(array('status' => 'fail' , 502));
+    	}
+    }
 }
 ?>
