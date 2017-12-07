@@ -9,15 +9,14 @@ class pegawai extends REST_Controller {
 
     function __construct($config = 'rest') {
         parent::__construct($config);
-        $this->load->database();
-        $this->load->model('Mdl_crud');
+        $this->load->model('Model_pegawai');
     }
 
     //Menampilkan data kontak
     function index_get() {
         $nip = $this->get('nip');
         $response = array(
-            'pegawai' => $this->Mdl_crud->pull_all('data_pegawai')->result());
+            $this->Model_pegawai->pull_all('data_pegawai')->result());
 
         $this->response($response, 200);
     }
@@ -31,7 +30,7 @@ class pegawai extends REST_Controller {
     			'alamat'	=>$this->post('alamat'),
     			'jabatan'	=>$this->post('jabatan')
     	);
-    	$insert = $this->Mdl_crud->add('data_pegawai', $data);
+    	$insert = $this->Model_pegawai->add('data_pegawai', $data);
     	if ($insert) {
     		$this->response($data, 200);
     	} else {
@@ -47,8 +46,8 @@ class pegawai extends REST_Controller {
     			'alamat'	=>$this->put('alamat'),
     			'jabatan'	=>$this->put('jabatan')
     	);
-    	$this->db->where('nip', $nip);
-    	$update = $this->db->update('data_pegawai', $data);
+
+    	$update = $this->Model_pegawai->edit('data_pegawai', $data, $nip);
     	if($update){
     		$this->response($data, 200);
     	} else {
@@ -57,8 +56,7 @@ class pegawai extends REST_Controller {
     }
     function index_delete(){
     	$nip = $this->delete('nip');
-    	$this->db->where('nip', $nip);
-    	$delete = $this->db->delete('data_pegawai');
+    	$delete = $this->Model_pegawai->remove('data_pegawai', 'nip');
     	if($delete){
     		$this->response(array('status' => 'success'), 201);
     	} else {
