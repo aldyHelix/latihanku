@@ -16,9 +16,8 @@ class absensi_masuk extends REST_Controller {
     //Menampilkan data kontak
     function index_get() {
         $nip = $this->get('nip');
-        $response = array(
-            $this->Model_absensi->pull_all('absen_masuk')->result(),
-        );
+        $response = $this->Model_absensi->pull_join('absen_masuk', 'inner')->result();
+
         $this->response($response, 200);
     }
 
@@ -28,7 +27,7 @@ class absensi_masuk extends REST_Controller {
     			'nip' =>$this->post('nip'),
     			'waktu_absen' =>$waktu
     	);
-    	$insert = $this->Model_absensi->add_pg('absen_masuk', $data);
+    	$insert = $this->Model_absensi->add('absen_masuk', $data);
     	if ($insert) {
     		$this->response($data, 200);
     	} else {

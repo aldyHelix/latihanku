@@ -67,7 +67,9 @@ class Model_absensi extends CI_Model
 			$this->db->select($select);
 		}
 		foreach ($joinTableCond as $jt) {
-			if (empty($jt['type'])) $this->db->join($jt['table'], $jt['cond']); else $this->db->join($jt['table'], $jt['cond'], $jt['type']);
+			if (empty($jt['type'])) 
+				 $this->db->join($jt['table'], $jt['cond']); 
+			else $this->db->join($jt['table'], $jt['cond'], $jt['type']);
 		}
 		if (!empty($where)) {
 			$this->db->where($where);
