@@ -38,6 +38,7 @@
         <ul class="list-inline">
           <li> <a class="text-muted" href="#login" data-toggle="tab">Login</a>  </li>
           <li> <a class="text-muted" href="#forgot" data-toggle="tab">Forgot Password</a>  </li>
+          <li><a href="<?php echo base_url(); ?>index.php/Checkin_absen">cek in</a></li>
         </ul>
       </div>
     </div><!-- /container -->
