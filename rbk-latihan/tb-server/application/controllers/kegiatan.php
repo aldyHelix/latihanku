@@ -15,8 +15,7 @@ class kegiatan extends REST_Controller {
     //Menampilkan data kontak
     function index_get() {
         $id_kegiatan = $this->get('id_kegiatan');
-        $response = array(
-            $this->Model_kegiatan->pull_all('kegiatan')->result());
+        $response = $this->Model_kegiatan->pull_all('kegiatan')->result();
 
         $this->response($response, 200);
     }
@@ -40,7 +39,7 @@ class kegiatan extends REST_Controller {
     }
 
     function index_put(){
-    	$id_kegiatan = $this->get('id_kegiatan');
+    	$no = $this->get('no');
         $data =  array(
                 'id_kegiatan'             =>$this->post('id_kegiatan'),
                 'nama_kegiatan'         =>$this->post('nama_kegiatan'),
@@ -49,7 +48,7 @@ class kegiatan extends REST_Controller {
                 'sifat_kegiatan'    =>$this->post('sifat_kegiatan')
         );
 
-    	$update = $this->Model_kegiatan->edit('kegiatan', $data, $id_kegiatan);
+    	$update = $this->Model_kegiatan->edit('kegiatan', $data, array('no' => $no));
     	if($update){
     		$this->response($data, 200);
     	} else {
@@ -57,8 +56,8 @@ class kegiatan extends REST_Controller {
     	}
     }
     function index_delete(){
-    	$id_kegiatan = $this->get('id_kegiatan');
-    	$delete = $this->Model_kegiatan->remove('kegiatan', $id_kegiatan);
+    	$no = $this->get('no');
+    	$delete = $this->Model_kegiatan->remove('kegiatan', array('no' => $no));
     	if($delete){
     		$this->response(array('status' => 'success'), 201);
     	} else {

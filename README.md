@@ -16,6 +16,13 @@ Codeigniter 3
 REST API
 POSTman
 
+## Database List
+
+-db_absensi = Postgresql
+-db_kegiatan = Mysqli
+-db_kepegawaian = Mysqli
+-dbproject_skp = Mysqli
+
 ### Rest API 
 
 ```
